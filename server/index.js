@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/auth', {
-    useMongoClient: true
+	useMongoClient: true,
 });
 
 const app = express();
@@ -22,6 +22,4 @@ const server = http.createServer(app);
 server.listen(port);
 console.log('Server listening on port', port);
 
-
-process.on('SIGUSR2', () => { process.exit(0); });
-process.on('SIGUSR2', () => { server.close() });
+// process.on('SIGUSR2', () => { server.close(); });
