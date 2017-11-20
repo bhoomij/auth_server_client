@@ -8,8 +8,10 @@ function tokenForUser(user) {
 }
 
 exports.signup = function (req, res, next) {
-	const { email, password } = req.body;
-	if (!email.trim() || !password.trim()) {
+	let { email, password } = req.body;
+	email = email.trim();
+	password = password.trim();
+	if (!email || !password) {
 		return res.status(422).send({ error: 'You must provide email and password' });
 	}
 	User.findOne({ email }, (err, user) => {
